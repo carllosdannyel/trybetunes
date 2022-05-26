@@ -15,8 +15,7 @@ export default class Login extends Component {
     const { nome } = this.state;
     this.setState({ loading: true });
     await createUser({ name: nome });
-    this.setState({ loading: false });
-    this.setState({ pageSearch: true });
+    this.setState({ loading: false, pageSearch: true });
   }
 
   activateButton = () => {
