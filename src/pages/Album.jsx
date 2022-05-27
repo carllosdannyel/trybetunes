@@ -43,6 +43,7 @@ export default class Album extends Component {
           <p data-testid="album-name">{albumName}</p>
           {newArray.map((music) => (
             <MusicCard
+              trackId={ music.trackId }
               key={ musics.trackId }
               name={ music.trackName }
               url={ music.previewUrl }
