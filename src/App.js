@@ -11,7 +11,7 @@ import NotFound from './pages/NotFound';
 class App extends React.Component {
   render() {
     return (
-      <div>
+      <div className="App">
         <p>Trybe Tunes</p>
         <BrowserRouter>
           <Switch>

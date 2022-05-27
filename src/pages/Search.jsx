@@ -113,7 +113,7 @@ export default class search extends Component {
             )
             )
           }
-          {exibhition === false && <h2>Nenhum álbum foi encontrado</h2>}
+          {!exibhition && <h2>Nenhum álbum foi encontrado</h2>}
         </div>
       </div>
     );
