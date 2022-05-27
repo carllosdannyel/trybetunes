@@ -23,7 +23,6 @@ export default class Album extends Component {
     } = this.props;
 
     const fetchApi = await getMusics(id);
-    console.log(fetchApi);
     this.setState({
       musics: fetchApi,
       artistName: fetchApi[0].artistName,

@@ -6,7 +6,7 @@ import Loading from './Loading';
 export default class MusicCard extends Component {
   state = {
     loading: false,
-    favorites: [],
+    favorites: false,
   };
 
   componentDidMount() {
@@ -51,8 +51,9 @@ export default class MusicCard extends Component {
         </audio>
 
         <label htmlFor="favorites">
-          Favorita
+          Favoritar
           <input
+            name="favorites"
             checked={ favorites }
             onChange={ this.handleChange }
             data-testid={ `checkbox-music-${trackId}` }
