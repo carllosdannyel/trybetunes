@@ -12,12 +12,12 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <p>Trybe Tunes</p>
         <BrowserRouter>
+          <p>Trybe Tunes</p>
           <Switch>
             <Route exact path="/" component={ Login } />
             <Route path="/search" component={ Search } />
-            <Route path="/album" component={ Album } />
+            <Route path="/album/:id" component={ Album } />
             <Route path="/favorites" component={ Favorites } />
             <Route exact path="/profile" component={ Profile } />
             <Route path="/profile/edit" component={ ProfileEdit } />

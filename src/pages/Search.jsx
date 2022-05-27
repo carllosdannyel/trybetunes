@@ -12,7 +12,7 @@ export default class search extends Component {
     saveAlbuns: [],
     loading: false,
     exibhition: false,
-  }
+  };
 
   fetchAlbuns = async () => {
     const { name } = this.state;
@@ -26,7 +26,7 @@ export default class search extends Component {
       this.hasEnabledButton,
     );
     this.setState({ name: '', hasEnabledButton: true });
-  }
+  };
 
   hasEnabledButton = () => {
     const { name, saveAlbuns } = this.state;
@@ -41,12 +41,10 @@ export default class search extends Component {
     } else {
       this.setState({ hasEnabledButton: true });
     }
-  }
+  };
 
   handleChange = ({ target: { value } }) => {
-    this.setState(
-      { name: value }, () => this.hasEnabledButton(),
-    );
+    this.setState({ name: value }, () => this.hasEnabledButton());
   };
 
   render() {
@@ -62,7 +60,9 @@ export default class search extends Component {
     return (
       <div data-testid="page-search">
         <Header />
-        { loading ? <Loading /> : (
+        {loading ? (
+          <Loading />
+        ) : (
           <form>
             <label htmlFor="search">
               <input
@@ -83,36 +83,33 @@ export default class search extends Component {
           </form>
         )}
         <div>
-          {
-            (exibhition && (
-              <div>
-                <h1>
-                  Resultado de álbuns de:
-                  {' '}
-                  {`${searchedName}`}
-                </h1>
-                <ul>
-                  {saveAlbuns.map((album) => (
-                    <li key={ album.collectionId }>
+          {exibhition && (
+            <div>
+              <h1>
+                Resultado de álbuns de:
+                {' '}
+                {`${searchedName}`}
+              </h1>
+              <ul>
+                {saveAlbuns.map((album) => (
+                  <li key={ album.collectionId }>
+                    <Link
+                      data-testid={ `link-to-album-${album.collectionId}` }
+                      to={ `/album/${album.collectionId}` }
+                    >
                       <h3>{album.artistName}</h3>
-                      <Link
-                        data-testid={ `link-to-album-${album.collectionId}` }
-                        to={ `/album/${album.collectionId}` }
-                      >
-                        <img
-                          key={ album.artistId }
-                          src={ album.artworkUrl100 }
-                          alt={ `Foto do albuma ${album.artistName}` }
-                        />
-                      </Link>
+                      <img
+                        key={ album.artistId }
+                        src={ album.artworkUrl100 }
+                        alt={ `Foto do album ${album.artistName}` }
+                      />
                       <h3>{album.collectionName}</h3>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )
-            )
-          }
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
           {!exibhition && <h2>Nenhum álbum foi encontrado</h2>}
         </div>
       </div>

@@ -16,7 +16,7 @@ export default class Login extends Component {
     this.setState({ loading: true });
     await createUser({ name: nome });
     this.setState({ loading: false, pageSearch: true });
-  }
+  };
 
   activateButton = () => {
     const { nome } = this.state;
@@ -26,19 +26,19 @@ export default class Login extends Component {
     } else {
       this.setState({ button: true });
     }
-  }
+  };
 
   handleChange = ({ target }) => {
-    this.setState(
-      { [target.name]: target.value }, () => this.activateButton(),
-    );
+    this.setState({ [target.name]: target.value }, () => this.activateButton());
   };
 
   render() {
     const { button, nome, loading, pageSearch } = this.state;
     return (
       <div data-testid="page-login">
-        {loading ? <Loading /> : (
+        {loading ? (
+          <Loading />
+        ) : (
           <form>
             <label htmlFor="login">
               <input
@@ -59,7 +59,7 @@ export default class Login extends Component {
             </label>
           </form>
         )}
-        { pageSearch && <Redirect to="/search" /> }
+        {pageSearch && <Redirect to="/search" />}
       </div>
     );
   }
